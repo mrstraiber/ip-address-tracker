@@ -3,22 +3,24 @@ import { useState } from "react";
 import Image from "next/image";
 export default function SearchBar() {
   const [userInput, setUserInput] = useState("");
+
   return (
-    <div>
-      <form>
-        <div>
-          <input type="text" placeholder="Search for any IP address" />
-          <button>
-            <span>
-              <Image
-                src="/assets/icon-arrow.svg"
-                alt="icons arrow"
-                width={10}
-                height={10}
-              />
-            </span>
-          </button>
-        </div>
+    <div className="px-4 pt-10">
+      <form className="flex flex-row justify-center">
+        <input
+          className="h-12 w-[400px] rounded-l-lg border bg-white px-5 shadow-sm focus:ring-black focus:outline-none md:w-120"
+          type="text"
+          placeholder="Search for any IP address"
+        />
+
+        <button className="flex h-12 w-16 items-center justify-center rounded-r-lg rounded-tr rounded-br bg-black transition hover:cursor-pointer hover:bg-gray-600">
+          <Image
+            src="/assets/icon-arrow.svg"
+            alt="icons arrow"
+            width={14}
+            height={14}
+          />
+        </button>
       </form>
     </div>
   );

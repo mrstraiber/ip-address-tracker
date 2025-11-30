@@ -1,15 +1,18 @@
+import Details from "./components/Details";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
-// import GetUserInfo from "./api/routs";
 
 export default function Home() {
   return (
-    <div>
-      <div className="h-110 w-full bg-[url('/assets/bg-mobile.png')]">
+    <>
+      <div className="h-110 w-full bg-[url('/assets/bg-mobile.png')] md:bg-[url('/assets/bg-desktop.png')]">
         <Header />
-        <SearchBar />
+
+        <main className="m-auto max-w-5xl">
+          <SearchBar />
+          <Details />
+        </main>
       </div>
-      {/* <GetUserInfo ip="199.232.154.5" /> */}
-    </div>
+    </>
   );
 }
