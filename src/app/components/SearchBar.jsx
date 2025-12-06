@@ -4,9 +4,14 @@ import Image from "next/image";
 export default function SearchBar() {
   const [userInput, setUserInput] = useState("");
 
+  function handleSubnit(e) {
+    e.preventDefault();
+    console.log("clicked");
+  }
+
   return (
     <div className="px-4 pt-10">
-      <form className="flex flex-row justify-center">
+      <form className="flex flex-row justify-center" onSubmit={handleSubnit}>
         <input
           className="h-12 w-[400px] rounded-l-lg border bg-white px-5 shadow-sm focus:ring-black focus:outline-none md:w-120"
           type="text"
