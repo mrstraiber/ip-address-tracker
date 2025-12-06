@@ -13,7 +13,7 @@ export default function Map() {
     // mapRef.current = L.map("map").setView([51.505, -0.09], 15);
     mapRef.current = L.map(mapContainer.current, {
       center: [51.505, -0.09],
-      zoom: 15,
+      zoom: 15.5,
     });
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {

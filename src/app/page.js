@@ -11,21 +11,17 @@ const Map = dynamic(() => import("./components/Map"), {
 
 export default function Home() {
   return (
-    <div>
-      <div className="h-85 w-full bg-[url('/assets/bg-mobile.png')] md:bg-[url('/assets/bg-desktop.png')]">
-        <Header />
-        <main>
-          <div className="mx-auto max-w-5xl">
-            <SearchBar />
-            <div className="relative z-10">
-              <Details />
-            </div>
-          </div>
-        </main>
+    <main>
+      <div className="h-68 w-full bg-[url('/assets/bg-mobile.png')] md:bg-[url('/assets/bg-desktop.png')]">
+        <div className="mx-auto max-w-5xl">
+          <Header />
+          <SearchBar />
+          <Details />
+        </div>
       </div>
-      <div className="relative z-0 mt-[-70px]">
+      <div className="relative z-0">
         <Map />
       </div>
-    </div>
+    </main>
   );
 }

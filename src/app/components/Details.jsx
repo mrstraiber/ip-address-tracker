@@ -1,6 +1,6 @@
 export default function Details() {
   return (
-    <div className="mx-4 mt-10 rounded-xl bg-white px-6 py-6 text-center shadow-md">
+    <div className="relative z-10 mx-4 mt-10 rounded-xl bg-white px-6 py-6 text-center shadow-md">
       <div className="grid grid-cols-1 md:grid-cols-4 md:divide-x md:text-left">
         <div className="px-4">
           <span className="text-xs font-semibold text-gray-500">

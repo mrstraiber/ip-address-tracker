@@ -6,7 +6,6 @@ export default function SearchBar() {
 
   function handleSubnit(e) {
     e.preventDefault();
-    console.log("clicked");
   }
 
   return (
@@ -16,6 +15,10 @@ export default function SearchBar() {
           className="h-12 w-[400px] rounded-l-lg border bg-white px-5 shadow-sm focus:ring-black focus:outline-none md:w-120"
           type="text"
           placeholder="Search for any IP address"
+          // value={userInput}
+          onChange={(e) => {
+            console.log(Number(e.target.value));
+          }}
         />
 
         <button className="flex h-12 w-16 items-center justify-center rounded-r-lg rounded-tr rounded-br bg-black transition hover:cursor-pointer hover:bg-gray-600">
