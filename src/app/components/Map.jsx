@@ -19,6 +19,10 @@ export default function Map() {
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
     }).addTo(mapRef.current);
+
+    L.marker([51.505, -0.09], {
+      icon: L.icon({ iconUrl: "./assets/icon-location.svg" }),
+    }).addTo(mapRef.current);
   }, []);
 
   return <div ref={mapContainer} className="h-[600px] w-full"></div>;
