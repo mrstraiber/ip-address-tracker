@@ -1,29 +1,43 @@
 "use client";
-import { useEffect, useRef } from "react";
+
+import { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-export default function Map() {
+export default function Map({ data }) {
   const mapRef = useRef(null);
   const mapContainer = useRef(null);
+  const markerRef = useRef(null);
+  const [coords, setCoords] = useState([51.505, -0.09]);
+
+  // if the data obj contain corrds of the location we will update the state 'setCoords' as result the useEffect will trigger and the map will marker will point to the ip address location
 
   useEffect(() => {
-    if (mapRef.current) return;
+    if (data?.latitude && data?.longitude) {
+      setCoords([data.latitude, data.longitude]);
+    }
+  }, [data]);
 
-    // mapRef.current = L.map("map").setView([51.505, -0.09], 15);
-    mapRef.current = L.map(mapContainer.current, {
-      center: [51.505, -0.09],
-      zoom: 15.5,
-    });
+  // display map
+  useEffect(() => {
+    if (!mapContainer.current || mapRef.current) return;
+
+    mapRef.current = L.map(mapContainer.current).setView(coords, 15);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
     }).addTo(mapRef.current);
 
-    L.marker([51.505, -0.09], {
-      icon: L.icon({ iconUrl: "./assets/icon-location.svg" }),
+    markerRef.current = L.marker(coords, {
+      icon: L.icon({ iconUrl: "/assets/icon-location.svg" }),
     }).addTo(mapRef.current);
-  }, []);
+  });
 
+  useEffect(() => {
+    if (!mapRef.current || !markerRef.current) return;
+
+    mapRef.current.setView(coords, 15);
+    markerRef.current.setLatLng(coords);
+  }, [coords]);
   return <div ref={mapContainer} className="h-[600px] w-full"></div>;
 }
