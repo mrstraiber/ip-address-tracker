@@ -56,7 +56,7 @@ export default function Home() {
   }
 
   // handle close message button
-  function handleCloseButton() {
+  function handleErrorCloseButton() {
     setErrorInput(false);
     setErrorIp(false);
     setServerErrorMessage("");
@@ -71,21 +71,23 @@ export default function Home() {
 
           {/* if the user enter worng ip address format we will display a warning */}
           {errorInput && (
-            <ErrorMessage handleCloseButton={handleCloseButton}>
+            <ErrorMessage handleErrorCloseButton={handleErrorCloseButton}>
               Invalid IP address. Please enter a valid IP address. (For example: 203.0.113.14)
             </ErrorMessage>
           )}
 
           {/* if the ip address format is correct BUT it's doesn't exist */}
           {errorIp && (
-            <ErrorMessage handleCloseButton={handleCloseButton}>
+            <ErrorMessage handleErrorCloseButton={handleErrorCloseButton}>
               This IP [{isSubmited}], doesn t exist
             </ErrorMessage>
           )}
 
           {/* if the ip address format is correct BUT something happen during fetching data we will display that error to the user */}
           {serverErrorMessage && (
-            <ErrorMessage handleCloseButton={handleCloseButton}>{serverErrorMessage}</ErrorMessage>
+            <ErrorMessage handleErrorCloseButton={handleErrorCloseButton}>
+              {serverErrorMessage}
+            </ErrorMessage>
           )}
 
           <Details data={data} />

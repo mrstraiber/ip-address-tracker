@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+
 export default function SearchBar({ handleFetchData, showErrorMessage }) {
   const [userInput, setUserInput] = useState("");
 
@@ -12,7 +13,7 @@ export default function SearchBar({ handleFetchData, showErrorMessage }) {
     // prevent the app from re-loading
     e.preventDefault();
 
-    // check if the user enter a valid ip address
+    // check if the user enter a valid ip address, and if it does we will fetch the data, otherwise we'll display the error message
     ipFormat.test(userInput) ? handleFetchData(userInput) : showErrorMessage();
   }
 
@@ -36,12 +37,7 @@ export default function SearchBar({ handleFetchData, showErrorMessage }) {
         />
 
         <button className="flex h-12 w-16 cursor-pointer items-center justify-center rounded-r-lg rounded-tr rounded-br bg-black transition hover:cursor-pointer hover:bg-gray-600">
-          <Image
-            src="/assets/icon-arrow.svg"
-            alt="icons arrow"
-            width={14}
-            height={14}
-          />
+          <Image src="/assets/icon-arrow.svg" alt="icons arrow" width={14} height={14} />
         </button>
       </form>
     </div>

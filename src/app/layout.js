@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 export const metadata = {
   title: "IP Address Tracker",
   description:
@@ -9,7 +9,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
